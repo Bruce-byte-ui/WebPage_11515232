@@ -1,450 +1,2650 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="藍天咖啡，為手沖咖啡愛好者挑選當季精品咖啡豆，讓每一杯都清澈、明亮、值得細品。">
-  <title>藍天咖啡｜讓風味，慢慢抵達</title>
+  <meta name="description" content="Fit Life 健身生活 - 專為學生與上班族打造的活力運動空間。提供科學化健身課程、專業教練指導、運動健康資訊與即時課程預約。">
+  <title>Fit Life 健身生活 ｜ 活力・專業・現代 運動健身品牌</title>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       CSS Variables & Reset (品牌核心色：黑色、橘色、白色)
+       ========================================================================== */
     :root {
-      --navy: #062742;
-      --blue: #0c5b95;
-      --sky: #75c6e8;
-      --mist: #eaf5f7;
-      --cream: #fbfaf6;
-      --ink: #122534;
-      --muted: #607482;
-      --line: #d7e4e8;
-      --sand: #e5b66b;
-      --shadow: 0 18px 50px rgba(6, 39, 66, .13);
+      --bg-black: #0c0e12;
+      --bg-surface: #141720;
+      --bg-card: #1a1e29;
+      --bg-card-hover: #222736;
+      --bg-input: #11141c;
+      
+      --brand-orange: #ff5722;
+      --brand-orange-light: #ff784e;
+      --brand-orange-dark: #e64a19;
+      --brand-orange-glow: rgba(255, 87, 34, 0.3);
+      --gradient-orange: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%);
+      
+      --text-white: #ffffff;
+      --text-gray-100: #f1f5f9;
+      --text-gray-300: #cbd5e1;
+      --text-gray-400: #94a3b8;
+      --text-gray-500: #64748b;
+      
+      --border-subtle: #272d3e;
+      --border-accent: rgba(255, 87, 34, 0.45);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+      --shadow-glow: 0 0 25px rgba(255, 87, 34, 0.35);
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      color: var(--ink);
-      background: var(--cream);
-      font: 16px/1.7 "Noto Sans TC", sans-serif;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      color: var(--text-gray-100);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-    .eyebrow {
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       Typography & Utility
+       ========================================================================== */
+    .section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 87, 34, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--brand-orange-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .section-title span {
+      background: var(--gradient-orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      color: var(--text-gray-400);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* 按鈕樣式 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient-orange);
+      color: var(--text-white);
+      box-shadow: 0 4px 18px rgba(255, 87, 34, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 87, 34, 0.6);
+      background: linear-gradient(135deg, #ff6a3c 0%, #ffa01a 100%);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-white);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--text-gray-300);
+      transform: translateY(-3px);
+    }
+
+    .btn-sm {
+      padding: 8px 18px;
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       Navigation Bar
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(12, 14, 18, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+
+    .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 0 0 18px;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
     }
-    .eyebrow::before { width: 28px; height: 1px; background: currentColor; content: ""; }
-    .section-title {
-      margin: 0;
-      font: 800 clamp(30px, 4vw, 46px)/1.28 "Noto Serif TC", serif;
-      letter-spacing: .045em;
-    }
-    .text-blue { color: var(--blue); }
-    .button, .outline-link {
-      display: inline-flex;
-      min-height: 50px;
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-orange);
+      border-radius: 10px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 23px;
-      border: 1px solid transparent;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--brand-orange-light);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-gray-300);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-white);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--brand-orange);
+      transition: var(--transition);
       border-radius: 2px;
-      font-size: 14px;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-white);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding: 100px 0 110px;
+      overflow: hidden;
+      background: radial-gradient(circle at 75% 25%, rgba(255, 87, 34, 0.18) 0%, transparent 55%),
+                  radial-gradient(circle at 15% 85%, rgba(255, 143, 0, 0.08) 0%, transparent 45%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, var(--brand-orange-glow) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(50px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 4.6vw, 3.8rem);
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: var(--gradient-orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.12rem;
+      color: var(--text-gray-300);
+      margin-bottom: 34px;
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .metric-item h4 {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-white);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .metric-item h4 span {
+      color: var(--brand-orange);
+    }
+
+    .metric-item p {
+      font-size: 0.85rem;
+      color: var(--text-gray-400);
+      margin-top: 4px;
+    }
+
+    /* Hero 視覺卡片右側 */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card-main {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-main::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-orange);
+    }
+
+    .hero-banner-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .pulse-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .hero-program-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .preview-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+    }
+
+    .preview-box:hover {
+      border-color: var(--border-accent);
+      transform: translateX(4px);
+    }
+
+    .preview-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(255, 87, 34, 0.12);
+      color: var(--brand-orange-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .preview-info h5 {
+      font-size: 0.98rem;
       font-weight: 700;
-      letter-spacing: .04em;
-      transition: transform .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
+      color: var(--text-white);
+      margin-bottom: 3px;
     }
-    .button:hover, .outline-link:hover { transform: translateY(-2px); }
-    .button--sand { color: var(--navy); background: var(--sand); }
-    .button--sand:hover { background: #f1cb8b; }
-    .button--dark { color: var(--navy); background: #fff; }
-    .outline-link { border-color: rgba(255,255,255,.72); color: #fff; }
-    .outline-link:hover { color: var(--navy); background: #fff; }
-    :focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
 
-    /* Header & hero */
-    .site-header { position: absolute; z-index: 20; top: 0; left: 0; width: 100%; border-bottom: 1px solid rgba(255,255,255,.28); }
-    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; color: #fff; }
-    .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; border: 1px solid var(--sky); border-radius: 50%; color: var(--sky); font: 700 16px/1 "Playfair Display", serif; }
-    .brand-copy { display: grid; line-height: 1.05; }
-    .brand-copy strong { font-size: 13px; letter-spacing: .08em; }
-    .brand-copy small { margin-top: 4px; font-size: 8px; letter-spacing: .18em; opacity: .7; }
-    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 31px); }
-    .nav-links a { position: relative; color: #fff; font-size: 13px; font-weight: 500; white-space: nowrap; }
-    .nav-links a:not(.nav-cta)::after { position: absolute; right: 0; bottom: -5px; left: auto; width: 0; height: 1px; background: var(--sky); content: ""; transition: width .25s ease; }
-    .nav-links a:not(.nav-cta):hover::after { right: auto; left: 0; width: 100%; }
-    .nav-links .nav-cta { padding: 8px 13px; border: 1px solid rgba(255,255,255,.72); }
-    .nav-links .nav-cta:hover { color: var(--navy); background: #fff; }
-    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.7); color: #fff; background: transparent; font-size: 23px; line-height: 1; }
-
-    .hero { position: relative; min-height: 704px; overflow: hidden; color: #fff; background: var(--navy); isolation: isolate; }
-    .hero::before { position: absolute; z-index: -2; top: -320px; right: -210px; width: 810px; height: 810px; border-radius: 50%; background: radial-gradient(circle, rgba(117,198,232,.38), rgba(12,91,149,.18) 38%, transparent 69%); content: ""; }
-    .hero::after { position: absolute; z-index: -1; right: 12%; bottom: -430px; width: 780px; height: 780px; border: 1px solid rgba(117,198,232,.18); border-radius: 50%; box-shadow: 0 0 0 65px rgba(117,198,232,.035), 0 0 0 154px rgba(117,198,232,.025); content: ""; }
-    .hero-grid { min-height: 704px; display: grid; grid-template-columns: 1.02fr .98fr; gap: 45px; align-items: center; padding: 122px 0 72px; }
-    .hero-copy { position: relative; z-index: 2; }
-    .hero .eyebrow { color: var(--sky); }
-    .hero h1 { max-width: 650px; margin: 0 0 23px; font: 800 clamp(42px, 5.5vw, 68px)/1.22 "Noto Serif TC", serif; letter-spacing: .05em; }
-    .hero h1 span { color: var(--sky); }
-    .hero-lede { max-width: 500px; margin: 0; color: rgba(255,255,255,.79); font-size: 16px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
-    .hero-note { margin: 31px 0 0; color: rgba(255,255,255,.55); font: 600 11px/1.5 "Playfair Display", serif; letter-spacing: .16em; }
-    .scroll-cue { position: absolute; bottom: 35px; left: 0; display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.63); font-size: 10px; font-weight: 600; letter-spacing: .18em; }
-    .scroll-cue::before { width: 38px; height: 1px; background: var(--sky); content: ""; }
-
-    .hero-art { position: relative; align-self: stretch; min-height: 470px; overflow: hidden; }
-    .hero-art .sun { position: absolute; top: 52px; right: 54px; width: clamp(138px, 18vw, 200px); aspect-ratio: 1; border-radius: 50%; background: #b9e8f5; box-shadow: 0 0 0 27px rgba(117,198,232,.09), 0 0 0 59px rgba(117,198,232,.045); }
-    .mountain { position: absolute; right: -11%; bottom: 6px; width: 116%; height: 260px; transform: skewY(-9deg); transform-origin: right bottom; background: linear-gradient(146deg, transparent 0 27%, rgba(61,145,184,.36) 27.3% 48%, rgba(17,97,143,.77) 48.3%); clip-path: polygon(0 62%, 28% 20%, 44% 57%, 68% 4%, 100% 57%, 100% 100%, 0 100%); }
-    .mountain--back { right: 13%; bottom: 98px; width: 108%; height: 220px; opacity: .46; transform: skewY(-4deg); background: #2a81ae; clip-path: polygon(0 84%, 31% 30%, 45% 62%, 66% 9%, 100% 66%, 100% 100%, 0 100%); }
-    .horizon { position: absolute; right: -4%; bottom: 0; width: 116%; height: 112px; background: linear-gradient(90deg, rgba(7,45,75,.5), #0d5684); transform: skewY(-4deg); }
-    .coffee-vessel { position: absolute; z-index: 4; right: 18%; bottom: 36px; width: 192px; height: 274px; filter: drop-shadow(18px 22px 14px rgba(0,0,0,.22)); }
-    .vessel-neck { position: absolute; top: 0; left: 62px; width: 68px; height: 42px; border: 7px solid #b3e2ef; border-bottom: 0; border-radius: 50% 50% 0 0; background: rgba(6,39,66,.62); }
-    .vessel-body { position: absolute; top: 33px; left: 18px; width: 150px; height: 212px; border: 7px solid #b3e2ef; border-radius: 31% 31% 42% 42% / 12% 12% 37% 37%; background: linear-gradient(90deg, rgba(30,112,151,.9), rgba(5,35,60,.9) 45%, rgba(83,167,198,.8)); overflow: hidden; }
-    .vessel-body::before { position: absolute; top: 15px; left: 0; width: 100%; height: 5px; background: rgba(197,237,244,.8); box-shadow: 0 48px rgba(197,237,244,.25), 0 95px rgba(197,237,244,.18), 0 145px rgba(197,237,244,.13); content: ""; }
-    .vessel-body::after { position: absolute; top: 5px; left: 48%; width: 24px; height: 200px; border-radius: 50%; background: rgba(218,247,251,.17); content: ""; }
-    .vessel-handle { position: absolute; right: 0; bottom: 49px; width: 62px; height: 98px; border: 10px solid #a9dce9; border-left: 0; border-radius: 0 53px 53px 0; }
-    .art-label { position: absolute; z-index: 5; right: 0; bottom: 64px; display: grid; gap: 3px; color: rgba(255,255,255,.73); font-size: 11px; letter-spacing: .1em; text-align: right; }
-    .art-label strong { color: var(--sky); font: 700 22px/1 "Playfair Display", serif; }
-
-    /* Story */
-    .story { padding: 118px 0; background: #fff; }
-    .story-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 8vw, 105px); align-items: center; }
-    .story-visual { position: relative; min-height: 416px; }
-    .seal { position: absolute; top: 0; left: 0; width: 310px; height: 310px; display: grid; place-items: center; border: 1px solid #a8d2df; border-radius: 50%; color: var(--blue); background: radial-gradient(circle at 35% 30%, #fff 0, #eaf6f8 68%, #d9edf1 100%); }
-    .seal::before, .seal::after { position: absolute; border: 1px solid rgba(12,91,149,.25); border-radius: 50%; content: ""; }
-    .seal::before { inset: 17px; }
-    .seal::after { inset: 44px; border-style: dashed; }
-    .seal-inner { position: relative; z-index: 1; display: grid; gap: 7px; text-align: center; }
-    .seal-inner b { font: 700 42px/1 "Playfair Display", serif; }
-    .seal-inner span { font-size: 13px; font-weight: 700; letter-spacing: .1em; }
-    .seal-inner small { font: 600 9px/1.5 "Playfair Display", serif; letter-spacing: .15em; }
-    .blue-note { position: absolute; right: 0; bottom: 0; width: 235px; padding: 27px 28px; color: #fff; background: var(--navy); box-shadow: var(--shadow); }
-    .blue-note .eyebrow { margin-bottom: 9px; color: var(--sky); font-size: 9px; }
-    .blue-note p { margin: 0; font: 700 20px/1.55 "Noto Serif TC", serif; letter-spacing: .05em; }
-    .story-copy p { margin: 19px 0 0; color: var(--muted); }
-    .inline-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding-bottom: 5px; border-bottom: 1px solid var(--blue); color: var(--blue); font-weight: 700; }
-    .inline-link:hover { color: var(--navy); }
-
-    /* Coffee collection */
-    .coffee { padding: 111px 0 120px; background: var(--mist); }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 39px; }
-    .section-heading p { max-width: 370px; margin: 0; color: var(--muted); }
-    .coffee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
-    .coffee-card { position: relative; min-height: 384px; display: flex; flex-direction: column; overflow: hidden; padding: 30px; color: #fff; background: var(--navy); box-shadow: var(--shadow); }
-    .coffee-card:nth-child(2) { background: #106396; }
-    .coffee-card:nth-child(3) { background: #164c68; }
-    .coffee-card::after { position: absolute; right: -90px; bottom: -90px; width: 260px; height: 260px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; box-shadow: 0 0 0 27px rgba(255,255,255,.045), 0 0 0 65px rgba(255,255,255,.025); content: ""; }
-    .card-top, .coffee-card h3, .flavour, .card-footer { position: relative; z-index: 1; }
-    .card-top { color: var(--sky); font: 700 12px/1.3 "Playfair Display", serif; letter-spacing: .12em; }
-    .origin { margin: 25px 0 8px; color: rgba(255,255,255,.69); font-size: 10px; font-weight: 700; letter-spacing: .15em; }
-    .coffee-card h3 { margin: 0; font: 700 26px/1.38 "Noto Serif TC", serif; letter-spacing: .04em; }
-    .flavour { margin: 15px 0 0; color: rgba(255,255,255,.73); font-size: 14px; }
-    .card-footer { display: flex; align-items: end; justify-content: space-between; gap: 14px; margin-top: auto; }
-    .price { font: 700 15px/1.3 "Playfair Display", serif; letter-spacing: .04em; }
-    .save-coffee { padding: 0 0 5px; border: 0; border-bottom: 1px solid rgba(255,255,255,.72); color: #fff; background: transparent; font-size: 13px; font-weight: 700; white-space: nowrap; transition: color .2s, border-color .2s; }
-    .save-coffee:hover { border-color: var(--sand); color: var(--sand); }
-
-    /* Brew */
-    .brew { padding: 118px 0; background: #fff; }
-    .brew-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(42px, 8vw, 90px); align-items: center; }
-    .brew-art { position: relative; height: 414px; overflow: hidden; background: linear-gradient(136deg, #e3f4f7 0 48%, #f8fcfc 48% 100%); }
-    .brew-art::before { position: absolute; top: 37px; left: 35px; width: 68px; height: 41px; border-top: 1px solid #6cb4ce; border-bottom: 1px solid #6cb4ce; content: ""; }
-    .brew-art::after { position: absolute; top: 57px; left: 35px; width: 43px; border-top: 1px solid #6cb4ce; content: ""; }
-    .water-rings { position: absolute; top: 67px; left: 50%; width: 245px; height: 245px; border: 1px solid rgba(12,91,149,.27); border-radius: 50%; transform: translateX(-50%); box-shadow: 0 0 0 30px rgba(117,198,232,.12), 0 0 0 74px rgba(117,198,232,.065); }
-    .water-rings::before { position: absolute; top: 18px; left: 50%; width: 1px; height: 58px; background: #6bb8d1; content: ""; transform: translateX(-50%); }
-    .dripper { position: absolute; z-index: 2; top: 134px; left: 50%; width: 147px; height: 151px; border: 7px solid var(--blue); border-top: 0; background: linear-gradient(130deg, rgba(255,255,255,.85), rgba(117,198,232,.25)); clip-path: polygon(0 0, 100% 0, 74% 100%, 26% 100%); transform: translateX(-50%); }
-    .dripper::after { position: absolute; right: 32px; bottom: 19px; left: 32px; height: 33px; border-top: 2px solid rgba(12,91,149,.55); border-bottom: 2px solid rgba(12,91,149,.35); content: ""; }
-    .carafe { position: absolute; z-index: 1; bottom: 56px; left: 50%; width: 139px; height: 106px; border: 6px solid var(--blue); border-radius: 16px 16px 45% 45%; background: rgba(117,198,232,.23); transform: translateX(-50%); }
-    .carafe::before { position: absolute; top: -28px; left: 29px; width: 70px; height: 28px; border: 6px solid var(--blue); border-bottom: 0; border-radius: 50% 50% 0 0; content: ""; }
-    .brew-caption { position: absolute; right: 24px; bottom: 19px; color: var(--blue); text-align: right; }
-    .brew-caption span { display: block; font: 700 11px/1.5 "Playfair Display", serif; letter-spacing: .12em; }
-    .brew-caption strong { font: 700 24px/1.1 "Playfair Display", serif; }
-    .brew-copy > p { margin: 18px 0 25px; color: var(--muted); }
-    .brew-steps { border-top: 1px solid var(--line); }
-    .brew-step { display: grid; grid-template-columns: 52px 1fr; gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-    .step-number { color: var(--blue); font: 700 24px/1 "Playfair Display", serif; }
-    .brew-step h3 { margin: 0; font: 700 16px/1.5 "Noto Serif TC", serif; }
-    .brew-step p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
-
-    /* Subscribe and footer */
-    .visit { position: relative; overflow: hidden; padding: 108px 0 113px; color: #fff; text-align: center; background: var(--navy); }
-    .visit::before, .visit::after { position: absolute; width: 390px; height: 390px; border: 1px solid rgba(117,198,232,.17); border-radius: 50%; content: ""; }
-    .visit::before { top: -245px; left: -153px; box-shadow: 0 0 0 45px rgba(117,198,232,.035); }
-    .visit::after { right: -170px; bottom: -260px; box-shadow: 0 0 0 50px rgba(117,198,232,.035); }
-    .visit .wrap { position: relative; z-index: 1; max-width: 715px; }
-    .visit .eyebrow { justify-content: center; color: var(--sky); }
-    .visit h2 { margin: 0; font: 800 clamp(30px, 4vw, 46px)/1.3 "Noto Serif TC", serif; letter-spacing: .045em; }
-    .visit p { max-width: 510px; margin: 19px auto 29px; color: rgba(255,255,255,.72); }
-    .subscribe-form { display: flex; min-height: 58px; border: 1px solid rgba(255,255,255,.62); }
-    .subscribe-form input { min-width: 0; flex: 1; padding: 0 18px; border: 0; color: #fff; outline: none; background: transparent; }
-    .subscribe-form input::placeholder { color: rgba(255,255,255,.56); }
-    .subscribe-form button { padding: 0 23px; border: 0; color: var(--navy); background: var(--sand); font-size: 14px; font-weight: 700; white-space: nowrap; transition: background .2s; }
-    .subscribe-form button:hover { background: #f1cb8b; }
-    .site-footer { padding: 66px 0 23px; color: rgba(255,255,255,.68); background: #031c31; }
-    .footer-grid { display: grid; grid-template-columns: 1.45fr .8fr 1fr; gap: 55px; padding-bottom: 48px; }
-    .footer-brand .brand { margin-bottom: 16px; }
-    .footer-brand p { max-width: 330px; margin: 0; font-size: 14px; }
-    .footer-title { margin: 0 0 14px; color: var(--sky); font-size: 11px; font-weight: 700; letter-spacing: .18em; }
-    .footer-links { display: grid; gap: 8px; font-size: 14px; }
-    .footer-links a:hover { color: var(--sky); }
-    .footer-links address { font-style: normal; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.44); font: 600 10px/1.5 "Playfair Display", serif; letter-spacing: .1em; }
-
-    .toast { position: fixed; z-index: 50; right: 22px; bottom: 22px; max-width: min(370px, calc(100vw - 44px)); padding: 14px 18px; border-left: 3px solid var(--sand); color: #fff; background: var(--navy); box-shadow: var(--shadow); font-size: 14px; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease; }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 820px) {
-      .menu-toggle { display: grid; place-items: center; }
-      .nav { position: relative; }
-      .nav-links { position: absolute; top: 78px; right: -24px; left: -24px; max-height: 0; display: grid; gap: 0; overflow: hidden; background: #05233c; transition: max-height .35s ease; }
-      .nav-links.open { max-height: 300px; border-top: 1px solid rgba(255,255,255,.16); }
-      .nav-links a { display: block; padding: 13px 24px; }
-      .nav-links .nav-cta { margin: 5px 24px 15px; padding: 10px 13px; text-align: center; }
-      .hero { min-height: 710px; }
-      .hero-grid { min-height: 710px; grid-template-columns: 1fr; gap: 0; padding: 118px 0 43px; }
-      .hero-art { min-height: 276px; margin-top: -9px; }
-      .hero-art .sun { top: 19px; right: 20%; width: 130px; }
-      .mountain { height: 180px; }
-      .mountain--back { bottom: 69px; height: 150px; }
-      .coffee-vessel { right: 17%; bottom: -12px; transform: scale(.72); transform-origin: bottom right; }
-      .art-label { display: none; }
-      .scroll-cue { display: none; }
-      .story-grid, .brew-grid { grid-template-columns: 1fr; }
-      .story-visual { max-width: 525px; width: 100%; min-height: 400px; }
-      .coffee-grid { grid-template-columns: repeat(2, 1fr); }
-      .coffee-card:nth-child(3) { grid-column: span 2; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
+    .preview-info p {
+      font-size: 0.8rem;
+      color: var(--text-gray-400);
     }
-    @media (max-width: 560px) {
-      .wrap { width: calc(100% - 34px); }
-      .nav-links { right: -17px; left: -17px; }
-      .hero { min-height: 680px; }
-      .hero-grid { min-height: 680px; padding-top: 106px; }
-      .hero h1 { font-size: 40px; }
-      .hero-lede { font-size: 14px; }
-      .hero-actions { gap: 9px; margin-top: 24px; }
-      .hero-actions .button, .hero-actions .outline-link { min-height: 46px; padding: 8px 15px; font-size: 13px; }
-      .hero-note { margin-top: 21px; }
-      .hero-art { min-height: 219px; }
-      .hero-art .sun { width: 92px; }
-      .coffee-vessel { right: 5%; bottom: -48px; transform: scale(.57); }
-      .story, .coffee, .brew { padding: 76px 0; }
-      .seal { width: 245px; height: 245px; }
-      .seal-inner b { font-size: 35px; }
-      .story-visual { min-height: 347px; }
-      .blue-note { width: 185px; padding: 20px; }
-      .blue-note p { font-size: 16px; }
-      .section-heading { display: block; margin-bottom: 28px; }
-      .section-heading p { margin-top: 14px; font-size: 14px; }
-      .coffee-grid { grid-template-columns: 1fr; }
-      .coffee-card, .coffee-card:nth-child(3) { min-height: 330px; grid-column: auto; }
-      .coffee-card { padding: 25px; }
-      .brew-art { height: 310px; }
-      .water-rings { top: 45px; width: 178px; height: 178px; box-shadow: 0 0 0 23px rgba(117,198,232,.12), 0 0 0 53px rgba(117,198,232,.065); }
-      .dripper { top: 95px; transform: translateX(-50%) scale(.75); }
-      .carafe { bottom: 37px; transform: translateX(-50%) scale(.75); }
-      .visit { padding: 76px 0; }
-      .subscribe-form { display: grid; gap: 0; border: 0; }
-      .subscribe-form input { min-height: 54px; border: 1px solid rgba(255,255,255,.62); }
-      .subscribe-form button { min-height: 54px; margin-top: 10px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 33px; }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom { display: grid; gap: 8px; }
+
+    .hero-float-badge {
+      position: absolute;
+      bottom: -18px;
+      right: 18px;
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border-accent);
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-white);
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-      .reveal { opacity: 1; transform: none; }
+
+    .hero-float-badge svg {
+      color: #fbbf24;
+    }
+
+    /* ==========================================================================
+       Target Audience: 學生與上班族專屬雙軌機制
+       ========================================================================== */
+    .audience-section {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .audience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .audience-card:hover {
+      border-color: var(--brand-orange);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .audience-card.student::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .audience-card.worker::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, var(--brand-orange-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .audience-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .audience-card.student .audience-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .audience-card.worker .audience-tag {
+      background: rgba(255, 87, 34, 0.15);
+      color: var(--brand-orange-light);
+      border: 1px solid var(--border-accent);
+    }
+
+    .audience-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 14px;
+      font-family: var(--font-heading);
+    }
+
+    .audience-desc {
+      color: var(--text-gray-300);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .audience-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .audience-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-gray-200);
+    }
+
+    .audience-perks svg {
+      width: 18px;
+      height: 18px;
+      color: var(--brand-orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ==========================================================================
+       Fitness Courses Section (健身課程介紹)
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+
+    .filter-btn {
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-gray-300);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--brand-orange);
+      color: var(--text-white);
+      border-color: var(--brand-orange);
+      box-shadow: 0 4px 15px rgba(255, 87, 34, 0.35);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .course-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .course-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .course-target-badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-white);
+    }
+
+    .course-target-badge.student {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+
+    .course-target-badge.worker {
+      background: rgba(255, 87, 34, 0.15);
+      color: var(--brand-orange-light);
+    }
+
+    .course-category {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--brand-orange);
+      letter-spacing: 0.05em;
+    }
+
+    .course-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .course-desc {
+      font-size: 0.92rem;
+      color: var(--text-gray-400);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .course-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .meta-box span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-gray-500);
+      margin-bottom: 3px;
+    }
+
+    .meta-box strong {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .course-difficulty {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--text-gray-400);
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       Interactive Health Tool & Fitness Information (運動資訊與互動計算)
+       ========================================================================== */
+    .info-section {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    /* 互動計算機 */
+    .calculator-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: 100px;
+    }
+
+    .calc-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .calc-title svg {
+      color: var(--brand-orange);
+    }
+
+    .calc-desc {
+      font-size: 0.88rem;
+      color: var(--text-gray-400);
+      margin-bottom: 24px;
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-gray-300);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-white);
+      font-size: 0.92rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.15);
+    }
+
+    .calc-result-box {
+      margin-top: 22px;
+      padding: 20px;
+      background: rgba(255, 87, 34, 0.08);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      display: none;
+    }
+
+    .calc-result-box.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 0.9rem;
+    }
+
+    .result-row strong {
+      color: var(--brand-orange-light);
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+    }
+
+    .result-recommendation {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      font-size: 0.82rem;
+      color: var(--text-gray-300);
+      line-height: 1.6;
+    }
+
+    /* 運動資訊文章列表 */
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .article-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+
+    .article-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .article-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.4;
+    }
+
+    .article-snippet {
+      font-size: 0.88rem;
+      color: var(--text-gray-400);
+      line-height: 1.65;
+    }
+
+    .article-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: var(--text-gray-500);
+    }
+
+    .read-more-link {
+      color: var(--brand-orange-light);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .read-more-link:hover {
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       Trainers Section (教練介紹)
+       ========================================================================== */
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+    }
+
+    .trainer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .trainer-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .trainer-image-wrapper {
+      position: relative;
+      height: 250px;
+      background: #11141c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .trainer-avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #222736 0%, #141720 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-orange);
+      position: relative;
+    }
+
+    .trainer-avatar-placeholder svg {
+      width: 80px;
+      height: 80px;
+      opacity: 0.85;
+    }
+
+    .trainer-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(12, 14, 18, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-accent);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-orange-light);
+    }
+
+    .trainer-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .trainer-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 4px;
+      font-family: var(--font-heading);
+    }
+
+    .trainer-role {
+      font-size: 0.82rem;
+      color: var(--brand-orange);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .trainer-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .cert-pill {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      color: var(--text-gray-300);
+    }
+
+    .trainer-quote {
+      font-size: 0.85rem;
+      color: var(--text-gray-400);
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      border-left: 2px solid var(--brand-orange);
+      padding-left: 10px;
+    }
+
+    /* ==========================================================================
+       Booking Section (課程預約)
+       ========================================================================== */
+    .booking-section {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 87, 34, 0.08) 0%, transparent 70%),
+                  var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .booking-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .booking-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 40px;
+      right: 40px;
+      height: 3px;
+      background: var(--gradient-orange);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .booking-form .full-width {
+      grid-column: span 2;
+    }
+
+    .booking-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-white);
+      font-size: 0.92rem;
+      resize: vertical;
+      min-height: 90px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .booking-textarea:focus {
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.15);
+    }
+
+    .booking-notice {
+      font-size: 0.8rem;
+      color: var(--text-gray-400);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       FAQ & Social Proof
+       ========================================================================== */
+    .faq-grid {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--text-white);
+    }
+
+    .faq-header svg {
+      width: 20px;
+      height: 20px;
+      color: var(--brand-orange);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-header svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-content {
+      padding: 0 24px 20px;
+      color: var(--text-gray-300);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .faq-item.open .faq-content {
+      display: block;
+    }
+
+    /* ==========================================================================
+       Footer (頁尾)
+       ========================================================================== */
+    .footer {
+      background: #08090c;
+      border-top: 1px solid var(--border-subtle);
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-desc {
+      color: var(--text-gray-400);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 16px 0 20px;
+      max-width: 320px;
+    }
+
+    .footer-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-gray-400);
+      font-size: 0.88rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--brand-orange-light);
+      padding-left: 4px;
+    }
+
+    .footer-contact p {
+      font-size: 0.88rem;
+      color: var(--text-gray-400);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-contact svg {
+      width: 16px;
+      height: 16px;
+      color: var(--brand-orange);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-gray-500);
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ==========================================================================
+       Modal Popups (預約成功 / 文章閱讀彈窗)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 100%;
+      padding: 34px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-gray-400);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-white);
+    }
+
+    .modal-success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-white);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-gray-300);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .modal-summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      font-size: 0.85rem;
+      color: var(--text-gray-300);
+      margin-bottom: 24px;
+    }
+
+    .modal-summary-box p {
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .modal-summary-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       Responsive Breakpoints
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-visual {
+        max-width: 550px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .calculator-card {
+        position: static;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: var(--bg-surface);
+        flex-direction: column;
+        padding: 24px;
+        border-bottom: 1px solid var(--border-subtle);
+        gap: 16px;
+      }
+      .nav-menu.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+      .booking-form .full-width {
+        grid-column: span 1;
+      }
+      .booking-card {
+        padding: 28px 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="nav wrap" aria-label="主要導覽">
-      <a class="brand" href="#top" aria-label="回到藍天咖啡首頁">
-        <span class="brand-mark" aria-hidden="true">B</span>
-        <span class="brand-copy"><strong>藍天咖啡</strong><small>BLUE SKY COFFEE</small></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="開啟導覽選單">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#story">我們的故事</a>
-        <a href="#coffee">本季選豆</a>
-        <a href="#brew">沖煮日常</a>
-        <a class="nav-cta" href="#visit">訂閱風味通信</a>
-      </div>
-    </nav>
+
+  <!-- ==========================================================================
+       導覽列 Navigation Bar
+       ========================================================================== -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <!-- Brand Logo -->
+        <a href="#hero" class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 5v14M18 5v14M2 9v6M22 9v6M6 12h12"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">Fit Life</span>
+            <span class="brand-sub">健身生活</span>
+          </div>
+        </a>
+
+        <!-- Menu Links -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero" class="nav-link active">品牌首頁</a></li>
+          <li><a href="#audience" class="nav-link">專屬方案</a></li>
+          <li><a href="#courses" class="nav-link">健身課程</a></li>
+          <li><a href="#health-tool" class="nav-link">運動資訊與計算</a></li>
+          <li><a href="#trainers" class="nav-link">專業教練</a></li>
+          <li><a href="#faq" class="nav-link">常見問題</a></li>
+        </ul>
+
+        <!-- Right Action Button -->
+        <div class="nav-actions">
+          <a href="#booking" class="btn btn-primary btn-sm">立即預約體驗</a>
+          <button class="nav-toggle" id="navToggle" aria-label="切換導覽選單">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">HAND BREWED · SLOWLY ROASTED</p>
-          <h1 id="heroTitle">讓風味，在<span>藍天</span>下慢慢抵達。</h1>
-          <p class="hero-lede">藍天咖啡為喜歡手沖的您，挑選值得細品的單一產區咖啡豆。從第一縷花香，到最後一口回甘，每一杯都有屬於自己的晴朗天氣。</p>
-          <div class="hero-actions">
-            <a class="button button--sand" href="#coffee">探索本季咖啡豆 →</a>
-            <a class="outline-link" href="#story">認識藍天</a>
+  <!-- ==========================================================================
+       主視覺區 Hero Section
+       ========================================================================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left: Copy & Call-to-action -->
+        <div class="hero-content">
+          <div class="badge-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            現代專業體適能中心
           </div>
-          <p class="hero-note">TAIPEI · TAIWAN · EST. 2025</p>
-          <span class="scroll-cue">SCROLL TO DISCOVER</span>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="mountain mountain--back"></div>
-          <div class="mountain"></div>
-          <div class="horizon"></div>
-          <div class="coffee-vessel"><div class="vessel-neck"></div><div class="vessel-body"></div><div class="vessel-handle"></div></div>
-          <div class="art-label"><strong>92°C</strong><span>理想水溫</span><span>細細喚醒香氣</span></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="story" id="story" aria-labelledby="storyTitle">
-      <div class="wrap story-grid">
-        <div class="story-visual reveal" aria-hidden="true">
-          <div class="seal"><div class="seal-inner"><b>B</b><span>慢一點，更清楚。</span><small>LET THE FLAVOUR SPEAK</small></div></div>
-          <aside class="blue-note"><p class="eyebrow">BLUE SKY NOTE</p><p>一杯好咖啡，從來不是匆忙完成的事。</p></aside>
-        </div>
-        <div class="story-copy reveal">
-          <p class="eyebrow">OUR PHILOSOPHY</p>
-          <h2 class="section-title" id="storyTitle">在一杯之間，看見產地的<span class="text-blue">晴朗</span>。</h2>
-          <p>我們相信，精品咖啡的美好不該被複雜掩蓋。以小批次烘焙留住豆子的個性，再用穩定、誠實的手沖，讓風土與時間在杯中變得清晰。</p>
-          <p>給懂得放慢腳步的人，也給每一個想重新認識咖啡的人。</p>
-          <a class="inline-link" href="#brew">看看我們如何沖煮 <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
+          <h1 class="hero-title">
+            喚醒身體能量<br>
+            鍛鍊 <span>Fit Life</span> 精彩人生
+          </h1>
 
-    <section class="coffee" id="coffee" aria-labelledby="coffeeTitle">
-      <div class="wrap">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow">SEASONAL SELECTION</p><h2 class="section-title" id="coffeeTitle">今天，想喝哪一片<span class="text-blue">藍天</span>？</h2></div>
-          <p>三款當季單品，為不同的晨光、午後與靜夜而選。</p>
-        </div>
-        <div class="coffee-grid">
-          <article class="coffee-card reveal">
-            <div class="card-top">01 / BRIGHT</div><p class="origin">ETHIOPIA · YIRGACHEFFE</p><h3>衣索比亞・耶加雪菲</h3><p class="flavour">白花、佛手柑、蜂蜜</p>
-            <div class="card-footer"><span class="price">NT$ 520 / 200g</span><button class="save-coffee" type="button" data-coffee="衣索比亞・耶加雪菲">加入收藏 ＋</button></div>
-          </article>
-          <article class="coffee-card reveal">
-            <div class="card-top">02 / JUICY</div><p class="origin">KENYA · KIRINYAGA</p><h3>肯亞・祈安布</h3><p class="flavour">黑醋栗、洛神、葡萄柚</p>
-            <div class="card-footer"><span class="price">NT$ 580 / 200g</span><button class="save-coffee" type="button" data-coffee="肯亞・祈安布">加入收藏 ＋</button></div>
-          </article>
-          <article class="coffee-card reveal">
-            <div class="card-top">03 / ROUND</div><p class="origin">COLOMBIA · HUILA</p><h3>哥倫比亞・慧蘭</h3><p class="flavour">黃桃、焦糖、可可尾韻</p>
-            <div class="card-footer"><span class="price">NT$ 460 / 200g</span><button class="save-coffee" type="button" data-coffee="哥倫比亞・慧蘭">加入收藏 ＋</button></div>
-          </article>
-        </div>
-      </div>
-    </section>
+          <p class="hero-subtitle">
+            專為<strong>學生與上班族</strong>量身打造的運動空間。結合科學化體能訓練、多樣化活力課程與彈性時段，助你甩開久坐疲累與學業壓力，重塑自信體態！
+          </p>
 
-    <section class="brew" id="brew" aria-labelledby="brewTitle">
-      <div class="wrap brew-grid">
-        <div class="brew-art reveal" aria-hidden="true"><div class="water-rings"></div><div class="dripper"></div><div class="carafe"></div><div class="brew-caption"><span>V60 / 15G : 240ML</span><strong>2'45''</strong></div></div>
-        <div class="brew-copy reveal">
-          <p class="eyebrow">A QUIET RITUAL</p>
-          <h2 class="section-title" id="brewTitle">把時間交給水，讓咖啡說<span class="text-blue">自己的話</span>。</h2>
-          <p>不需要繁複儀式，只要三個安靜的步驟。每一個參數，都是為了讓你更靠近豆子原本的樣子。</p>
-          <div class="brew-steps">
-            <div class="brew-step"><span class="step-number">01</span><div><h3>研磨，先聞見期待</h3><p>15g 中細研磨，讓香氣從指尖開始展開。</p></div></div>
-            <div class="brew-step"><span class="step-number">02</span><div><h3>悶蒸，等待第一個呼吸</h3><p>以 92°C 熱水浸潤 30 秒，喚醒甜感與層次。</p></div></div>
-            <div class="brew-step"><span class="step-number">03</span><div><h3>注水，保持自己的節奏</h3><p>穩定畫圈，讓 240ml 的清澈在 2 分 45 秒完成。</p></div></div>
+          <div class="hero-buttons">
+            <a href="#booking" class="btn btn-primary">
+              免費預約體態評估
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#courses" class="btn btn-secondary">探索熱門課程</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <h4>12,000<span>+</span></h4>
+              <p>累計蛻變學員</p>
+            </div>
+            <div class="metric-item">
+              <h4>98.6<span>%</span></h4>
+              <p>課程滿意好評</p>
+            </div>
+            <div class="metric-item">
+              <h4>25<span>+</span></h4>
+              <p>國際認證專業教練</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="visit" id="visit" aria-labelledby="visitTitle">
-      <div class="wrap reveal">
-        <p class="eyebrow">THE BLUE SKY LETTER</p>
-        <h2 id="visitTitle">把下一杯好咖啡，寄到你的日常裡。</h2>
-        <p>每月一封風味通信，分享新豆、沖煮靈感與只給會員的小小驚喜。</p>
-        <form class="subscribe-form" id="subscribeForm">
-          <input type="email" aria-label="電子郵件地址" placeholder="your@email.com" required>
-          <button type="submit">訂閱風味通信</button>
+        <!-- Right: Interactive Visual Card -->
+        <div class="hero-visual">
+          <div class="hero-card-main">
+            <div class="hero-banner-badge">
+              <span class="pulse-pill">
+                <span class="pulse-dot"></span> 自由訓練時段開放中
+              </span>
+              <span style="font-size: 0.8rem; color: var(--text-gray-400);">尖峰客流實時監控</span>
+            </div>
+
+            <div class="hero-program-preview">
+              <div class="preview-box">
+                <div class="preview-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="preview-info">
+                  <h5>下班高效率 45 分鐘燃脂</h5>
+                  <p>專為上班族設計，擺脫肩頸緊繃與精神疲倦</p>
+                </div>
+              </div>
+
+              <div class="preview-box">
+                <div class="preview-icon" style="background: rgba(56, 189, 248, 0.12); color: #38bdf8;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="preview-info">
+                  <h5>學生極限體能爆發班</h5>
+                  <p>彈性不綁約、憑學生證享專屬優惠方案</p>
+                </div>
+              </div>
+
+              <div class="preview-box">
+                <div class="preview-icon" style="background: rgba(251, 191, 36, 0.12); color: #fbbf24;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7.5" r="4"></circle>
+                    <polyline points="17 11 19 13 23 9"></polyline>
+                  </svg>
+                </div>
+                <div class="preview-info">
+                  <h5>一對一科學化體態評估</h5>
+                  <p>InBody 數據解密與客製化運動營養處方</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Trust Badge -->
+            <div class="hero-float-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>學員真實評價 4.9 星好評認證</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Target Audience 雙軌專屬服務 (學生 & 上班族)
+       ========================================================================== */
+  -->
+  <section class="section audience-section" id="audience">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">貼心對象設計</div>
+        <h2 class="section-title">為<span>學生與上班族</span>量身設計</h2>
+        <p class="section-desc">
+          無論是課業忙碌的學生族群，或是久坐辦公室的上班族，Fit Life 都提供最契合你生活節奏的訓練計畫。
+        </p>
+      </div>
+
+      <div class="audience-grid">
+        <!-- 學生專區 -->
+        <div class="audience-card student">
+          <div>
+            <div class="audience-tag">🎓 大專院校 & 高中生專屬</div>
+            <h3 class="audience-title">活力學生養成計畫</h3>
+            <p class="audience-desc">
+              免除高額入會門檻與綁約壓力，適合課後體能充電、體態雕塑，以最高性價比投資健康體魄。
+            </p>
+            <ul class="audience-perks">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>憑學生證享 8 折優惠</strong>：單堂扣點、月費彈性不綁約。
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>非尖峰自主訓練時段</strong>：空堂隨時進場，專注自主訓練。
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>新手基礎力量指導</strong>：初學者免擔心，專業巡場教練耐心引導。
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a href="#booking" class="btn btn-secondary btn-sm" onclick="selectAudience('學生方案')">預約學生體驗方案</a>
+          </div>
+        </div>
+
+        <!-- 上班族專區 -->
+        <div class="audience-card worker">
+          <div>
+            <div class="audience-tag">💼 職場菁英 & 久坐族專屬</div>
+            <h3 class="audience-title">下班身心解壓與體態雕塑</h3>
+            <p class="audience-desc">
+              告別肩頸僵硬、駝背腰酸與下班無力感。在有限時間內達到最佳運動效益，充飽活力迎接每日挑戰。
+            </p>
+            <ul class="audience-perks">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>45 分鐘極速燃脂專班</strong>：下班後準時開練，高效率不拖延生活。
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>體態矯正與核心加強</strong>：專業修復久坐帶來的骨盆前傾與圓肩。
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <strong>五星級淋浴更衣空間</strong>：運動後清爽洗沐，輕鬆赴約或安心返家。
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a href="#booking" class="btn btn-primary btn-sm" onclick="selectAudience('上班族專案')">預約上班族體驗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       健身課程介紹 Fitness Courses Section
+       ========================================================================== -->
+  <section class="section" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">熱門精選課表</div>
+        <h2 class="section-title">全方位<span>科學化健身課程</span></h2>
+        <p class="section-desc">
+          從心肺耐力、肌力訓練到深層體態伸展，挑選最適合你目標的特色課程，讓每一次流汗都看見成果。
+        </p>
+      </div>
+
+      <!-- 分類篩選列 -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部課程</button>
+        <button class="filter-btn" data-filter="burn">極速燃脂</button>
+        <button class="filter-btn" data-filter="strength">肌力增肌</button>
+        <button class="filter-btn" data-filter="posture">體態舒壓</button>
+        <button class="filter-btn" data-filter="private">1對1私教</button>
+      </div>
+
+      <!-- 課程卡片容器 -->
+      <div class="courses-grid" id="coursesGrid">
+        <!-- 課程 1 -->
+        <div class="course-card" data-category="posture">
+          <div>
+            <div class="course-header">
+              <span class="course-category">體態舒壓</span>
+              <span class="course-target-badge worker">上班族首選</span>
+            </div>
+            <h3 class="course-title">上班族肩頸修復與核心體態</h3>
+            <p class="course-desc">
+              針對長時間低頭用電腦、久坐族設計。透過筋膜放鬆、核心穩定與深層背肌啟動，快速舒緩頸背酸痛並矯正圓肩駝背。
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>45 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>~320 kcal</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>輕度至中度</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★☆☆☆</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="bookSpecificCourse('上班族肩頸修復與核心體態')">預約此課程</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 課程 2 -->
+        <div class="course-card" data-category="burn">
+          <div>
+            <div class="course-header">
+              <span class="course-category">極速燃脂</span>
+              <span class="course-target-badge student">學生超人氣</span>
+            </div>
+            <h3 class="course-title">HIIT 爆汗極限間歇訓練</h3>
+            <p class="course-desc">
+              結合戰繩、壺鈴與波比跳的高強度間歇運動，啟動運動後「後燃效應」（EPOC），在課後 24 小時內持續燃燒熱量！
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>50 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>~650 kcal</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>高強度爆發</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★★★☆</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="bookSpecificCourse('HIIT 爆汗極限間歇訓練')">預約此課程</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 課程 3 -->
+        <div class="course-card" data-category="strength">
+          <div>
+            <div class="course-header">
+              <span class="course-category">肌力增肌</span>
+              <span class="course-target-badge">全民適用</span>
+            </div>
+            <h3 class="course-title">科學化漸進超負荷重量訓練</h3>
+            <p class="course-desc">
+              以三大項（深蹲、臥推、硬舉）為核心基礎，學習正確骨骼排列與發力模式，打好扎實體態結構，有效促進肌肉生長與骨質密度。
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>60 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>~480 kcal</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>中高阻力</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★★☆☆</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="bookSpecificCourse('科學化漸進超負荷重量訓練')">預約此課程</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 課程 4 -->
+        <div class="course-card" data-category="posture">
+          <div>
+            <div class="course-header">
+              <span class="course-category">體態舒壓</span>
+              <span class="course-target-badge">精緻小班</span>
+            </div>
+            <h3 class="course-title">皮拉提斯核心肌群雕塑</h3>
+            <p class="course-desc">
+              強調呼吸協調與骨盆中立位控制，強化人體天然「馬甲線」腹橫肌，打造修長緊實的身體線條，增強日常生活協調穩定度。
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>55 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>~300 kcal</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>溫和深層控制</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★☆☆☆</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="bookSpecificCourse('皮拉提斯核心肌群雕塑')">預約此課程</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 課程 5 -->
+        <div class="course-card" data-category="strength">
+          <div>
+            <div class="course-header">
+              <span class="course-category">肌力增肌</span>
+              <span class="course-target-badge student">學生最愛</span>
+            </div>
+            <h3 class="course-title">運動員專項體能與敏捷強化</h3>
+            <p class="course-desc">
+              適合各大專院校系隊運動員或體育愛好者。專注於步法變向、垂直彈跳力與核心傳遞鏈，全面提升專項運動表現。
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>50 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>~550 kcal</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>速度與敏捷</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★★★☆</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="bookSpecificCourse('運動員專項體能與敏捷強化')">預約此課程</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 課程 6 -->
+        <div class="course-card" data-category="private">
+          <div>
+            <div class="course-header">
+              <span class="course-category">1對1私教</span>
+              <span class="course-target-badge" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">VIP 尊爵客製</span>
+            </div>
+            <h3 class="course-title">一對一私人教練客製專案</h3>
+            <p class="course-desc">
+              包含完整 InBody 身體組成分析、FMS 功能性動作篩檢，針對減重、增肌或體態目標量身制定週期菜單與每週飲食追蹤。
+            </p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <div class="meta-box">
+                <span>課程時長</span>
+                <strong>60 分鐘</strong>
+              </div>
+              <div class="meta-box">
+                <span>熱量消耗</span>
+                <strong>客製化高強度</strong>
+              </div>
+              <div class="meta-box">
+                <span>適合強度</span>
+                <strong>依個人進度動態調整</strong>
+              </div>
+            </div>
+            <div class="course-footer">
+              <div class="course-difficulty">
+                難度：<span class="stars">★★★★★</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="bookSpecificCourse('一對一私人教練客製專案')">預約私教諮詢</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       運動資訊與互動工具 Fitness Info & Calculator
+       ========================================================================== -->
+  <section class="section info-section" id="health-tool">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">運動知識庫 & 科學數據</div>
+        <h2 class="section-title">健康資訊與<span>體態試算工具</span></h2>
+        <p class="section-desc">
+          掌握運動科學知識，配合個人生理數值精準規劃熱量與運動強度，讓努力更有效率。
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <!-- 左側：BMI & 每日能量消耗 (TDEE) 計算機 -->
+        <div class="calculator-card">
+          <div class="calc-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+              <line x1="16" y1="14" x2="16" y2="18"></line>
+              <path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path>
+            </svg>
+            個人體態與熱量計算機
+          </div>
+          <p class="calc-desc">輸入身體數值，即時試算 BMI 指數與每日建議消耗熱量 (TDEE)。</p>
+
+          <form id="healthCalculatorForm" onsubmit="calculateHealthMetrics(event)">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label class="form-label" for="calcGender">生理性別</label>
+                <select id="calcGender" class="form-select">
+                  <option value="male">男性</option>
+                  <option value="female">女性</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="calcAge">年齡 (歲)</label>
+                <input type="number" id="calcAge" class="form-input" placeholder="例: 24" min="15" max="80" value="25" required>
+              </div>
+            </div>
+
+            <div class="form-group-row">
+              <div class="form-group">
+                <label class="form-label" for="calcHeight">身高 (公分)</label>
+                <input type="number" id="calcHeight" class="form-input" placeholder="例: 172" min="120" max="230" value="172" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="calcWeight">體重 (公斤)</label>
+                <input type="number" id="calcWeight" class="form-input" placeholder="例: 65" min="30" max="200" value="65" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="calcActivity">日常活動程度</label>
+              <select id="calcActivity" class="form-select">
+                <option value="1.2">久坐辦公族 / 極少運動 (TDEE x 1.2)</option>
+                <option value="1.375">輕度活動 / 每週運動 1-3 天 (TDEE x 1.375)</option>
+                <option value="1.55" selected>中度活動 / 每週運動 3-5 天 (TDEE x 1.55)</option>
+                <option value="1.725">高強度運動 / 每週運動 6-7 天 (TDEE x 1.725)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              立即計算我的體態數值
+            </button>
+          </form>
+
+          <!-- 計算結果展示 -->
+          <div class="calc-result-box" id="calcResultBox">
+            <div class="result-row">
+              <span>身體質量指數 (BMI)</span>
+              <strong id="resultBmi">22.0 (正常)</strong>
+            </div>
+            <div class="result-row">
+              <span>基礎代謝率 (BMR)</span>
+              <strong id="resultBmr">1,610 kcal</strong>
+            </div>
+            <div class="result-row">
+              <span>每日能量維持總消耗 (TDEE)</span>
+              <strong id="resultTdee">2,495 kcal</strong>
+            </div>
+            <div class="result-recommendation" id="resultAdvice">
+              <strong>教練建議：</strong>您的 BMI 處於健康區間！若想雕塑身型，建議每週安排 3 次漸進重訓搭配 1 次有氧或高強度間歇運動，並保持均衡蛋白質攝取。
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側：精選運動資訊指南 -->
+        <div class="articles-list">
+          <div class="article-card">
+            <span class="article-tag">上班族健康專欄</span>
+            <h3 class="article-title">告別久坐烏龜頸！辦公室必學的 4 個深層舒展動作</h3>
+            <p class="article-snippet">
+              長時間盯著電腦屏幕會讓胸肌緊繃、上背菱形肌被拉長無力。只要每天花費 5 分鐘在辦公椅上進行頸部側曲與胸椎旋轉，便能大幅改善頭痛與疲憊感...
+            </p>
+            <div class="article-footer">
+              <span>閱讀時間：3 分鐘 ｜ Fit Life 教練部</span>
+              <span class="read-more-link" onclick="openArticleModal('告別久坐烏龜頸！辦公室必學的 4 個深層舒展動作', '長時間使用電腦常伴隨圓肩、烏龜頸與下背酸痛。改善要訣在於：1. 胸椎伸展：雙手抱頭背靠椅背後仰；2. 靠牆收下巴：保持頸部骨骼回正；3. 臀肌活化：定時起立深蹲喚醒臀大肌；4. 肩胛後收：改善內旋體態。搭配每週兩次全身性抗阻訓練，徹底擺脫久坐疲勞！')">閱讀全文 →</span>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <span class="article-tag">學生生活指南</span>
+            <h3 class="article-title">外食族高蛋白指南：便利商店與學校食堂的高效率增肌減脂菜單</h3>
+            <p class="article-snippet">
+              預算有限的學生如何在超商與自助餐挑選高蛋白餐點？掌握「優質蛋白質 + 複合碳水 + 低加工」三大黃金法則，不用每天水煮餐也能吃出好體態...
+            </p>
+            <div class="article-footer">
+              <span>閱讀時間：4 分鐘 ｜ 營養諮詢組</span>
+              <span class="read-more-link" onclick="openArticleModal('外食族高蛋白指南：便利商店與學校食堂的高效率增肌減脂菜單', '學生在便利商店的最佳搭配：1. 即食雞胸肉/無糖豆漿/溫泉蛋提供優質蛋白質；2. 地瓜或香蕉提供清潔慢速吸收碳水；3. 搭配一份生菜沙拉補充膳食纖維與微量元素。自助餐請避免油炸主食，多選蒸魚或滷雞腿，油水分離讓吃外食也能精準維持身材！')">閱讀全文 →</span>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <span class="article-tag">運動科學技巧</span>
+            <h3 class="article-title">重訓迷思大破解：新手運動後隔天不酸痛等於沒效果嗎？</h3>
+            <p class="article-snippet">
+              「延遲性肌肉酸痛 (DOMS)」是很多初學者的成就感來源，但酸痛程度並不能直接代表肌肉生長效果。深入瞭解漸進超負荷與神經適應的真正關鍵...
+            </p>
+            <div class="article-footer">
+              <span>閱讀時間：5 分鐘 ｜ 體適能科學團隊</span>
+              <span class="read-more-link" onclick="openArticleModal('重訓迷思大破解：新手運動後隔天不酸痛等於沒效果嗎？', '延遲性肌肉酸痛主要源於肌肉離心收縮時微小纖維受損與發炎反應。隨著身體適應訓練，酸痛感會逐漸降低，但這代表你的肌纖維修復效率提高、動作控制更佳！判斷進步的最佳標準是重量或組數能否『漸進超負荷』，而不是追求痛苦的殘留感。')">閱讀全文 →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       教練介紹 Trainers Section
+       ========================================================================== -->
+  <section class="section" id="trainers">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">專業王牌陣容</div>
+        <h2 class="section-title">國際認證<span>專業教練團隊</span></h2>
+        <p class="section-desc">
+          每位教練均具備國際四大體適能證照認證，擁有豐富教學經驗與科學化評估背景，為你的訓練安全與成效把關。
+        </p>
+      </div>
+
+      <div class="trainers-grid">
+        <!-- 教練 1 -->
+        <div class="trainer-card">
+          <div class="trainer-image-wrapper">
+            <div class="trainer-avatar-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="trainer-badge">教練總監 ｜ 7 年資歷</span>
+          </div>
+          <div class="trainer-body">
+            <div>
+              <h3 class="trainer-name">Marcus Chen</h3>
+              <p class="trainer-role">肌力體能 & 力量增肌總監</p>
+              <div class="trainer-certs">
+                <span class="cert-pill">NSCA-CSCS</span>
+                <span class="cert-pill">ACE-CPT</span>
+                <span class="cert-pill">健力國家裁判</span>
+              </div>
+              <p class="trainer-quote">
+                「訓練不是為了痛苦，而是為了在槓鈴下找到最真實、最強悍的自己。」
+              </p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="selectTrainer('Marcus Chen')">預約 Marcus 教練</button>
+          </div>
+        </div>
+
+        <!-- 教練 2 -->
+        <div class="trainer-card">
+          <div class="trainer-image-wrapper">
+            <div class="trainer-avatar-placeholder" style="background: linear-gradient(180deg, #2b2336 0%, #171420 100%);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #ff784e;">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="trainer-badge">體態專家 ｜ 5 年資歷</span>
+          </div>
+          <div class="trainer-body">
+            <div>
+              <h3 class="trainer-name">Elena Lin</h3>
+              <p class="trainer-role">皮拉提斯 & 上班族體態矯正</p>
+              <div class="trainer-certs">
+                <span class="cert-pill">Polestar Pilates</span>
+                <span class="cert-pill">NASM-CES</span>
+                <span class="cert-pill">筋膜放鬆證照</span>
+              </div>
+              <p class="trainer-quote">
+                「重塑身體的平衡與柔軟，讓良好體態成為你最優雅自信的名片。」
+              </p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="selectTrainer('Elena Lin')">預約 Elena 教練</button>
+          </div>
+        </div>
+
+        <!-- 教練 3 -->
+        <div class="trainer-card">
+          <div class="trainer-image-wrapper">
+            <div class="trainer-avatar-placeholder" style="background: linear-gradient(180deg, #1c2a38 0%, #121920 100%);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #38bdf8;">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="trainer-badge">燃脂教官 ｜ 6 年資歷</span>
+          </div>
+          <div class="trainer-body">
+            <div>
+              <h3 class="trainer-name">Leo Wang</h3>
+              <p class="trainer-role">極限燃脂 HIIT & 競技運動表現</p>
+              <div class="trainer-certs">
+                <span class="cert-pill">EXOS-XPS</span>
+                <span class="cert-pill">ACE-CPT</span>
+                <span class="cert-pill">CrossFit L1</span>
+              </div>
+              <p class="trainer-quote">
+                「在每一次心跳加速中突破極限，你所流的每一滴汗水都算數！」
+              </p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="selectTrainer('Leo Wang')">預約 Leo 教練</button>
+          </div>
+        </div>
+
+        <!-- 教練 4 -->
+        <div class="trainer-card">
+          <div class="trainer-image-wrapper">
+            <div class="trainer-avatar-placeholder" style="background: linear-gradient(180deg, #2a2c1f 0%, #161811 100%);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #a3e635;">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="trainer-badge">營養專家 ｜ 4 年資歷</span>
+          </div>
+          <div class="trainer-body">
+            <div>
+              <h3 class="trainer-name">Sarah Wu</h3>
+              <p class="trainer-role">功能性訓練 & 運動營養指導</p>
+              <div class="trainer-certs">
+                <span class="cert-pill">NASM-CPT</span>
+                <span class="cert-pill">Precision Nutrition</span>
+                <span class="cert-pill">TRX-STC</span>
+              </div>
+              <p class="trainer-quote">
+                「三分練七分吃，聰明建立可持續的生活型態，健康減脂不挨餓。」
+              </p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="selectTrainer('Sarah Wu')">預約 Sarah 教練</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       課程預約 Booking Section
+       ========================================================================== -->
+  <section class="section booking-section" id="booking">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">開啟蛻變旅程</div>
+        <h2 class="section-title">線上即時<span>預約體驗課程</span></h2>
+        <p class="section-desc">
+          填寫下方基本資訊，我們將於 24 小時內由專屬運動顧問與您聯繫確認，並贈送一次完整 InBody 體適能檢測！
+        </p>
+      </div>
+
+      <div class="booking-card">
+        <form id="courseBookingForm" onsubmit="handleBookingSubmit(event)">
+          <div class="booking-form">
+            <!-- 姓名 -->
+            <div class="form-group">
+              <label class="form-label" for="bookName">您的姓名 *</label>
+              <input type="text" id="bookName" class="form-input" placeholder="例如：陳士博" required>
+            </div>
+
+            <!-- 聯絡電話 -->
+            <div class="form-group">
+              <label class="form-label" for="bookPhone">行動電話 *</label>
+              <input type="tel" id="bookPhone" class="form-input" placeholder="例如：0912-345-678" required>
+            </div>
+
+            <!-- 電子郵件 -->
+            <div class="form-group">
+              <label class="form-label" for="bookEmail">電子郵件 *</label>
+              <input type="email" id="bookEmail" class="form-input" placeholder="例如：user@example.com" required>
+            </div>
+
+            <!-- 身分類別 (針對目標受眾) -->
+            <div class="form-group">
+              <label class="form-label" for="bookIdentity">身份類別 (享專屬優惠)</label>
+              <select id="bookIdentity" class="form-select">
+                <option value="學生方案">🎓 大專生/高中生 (享學生證專屬優惠)</option>
+                <option value="上班族專案" selected>💼 上班族/商務人士 (享下班專班時段)</option>
+                <option value="一般民眾">🏃 一般健身愛好者</option>
+              </select>
+            </div>
+
+            <!-- 想預約的課程 -->
+            <div class="form-group">
+              <label class="form-label" for="bookCourse">欲預約體驗課程 *</label>
+              <select id="bookCourse" class="form-select" required>
+                <option value="上班族肩頸修復與核心體態">上班族肩頸修復與核心體態 (45 min)</option>
+                <option value="HIIT 爆汗極限間歇訓練">HIIT 爆汗極限間歇訓練 (50 min)</option>
+                <option value="科學化漸進超負荷重量訓練">科學化漸進超負荷重量訓練 (60 min)</option>
+                <option value="皮拉提斯核心肌群雕塑">皮拉提斯核心肌群雕塑 (55 min)</option>
+                <option value="運動員專項體能與敏捷強化">運動員專項體能與敏捷強化 (50 min)</option>
+                <option value="一對一私人教練客製專案">一對一私人教練客製專案 (60 min)</option>
+              </select>
+            </div>
+
+            <!-- 指定教練 -->
+            <div class="form-group">
+              <label class="form-label" for="bookTrainer">偏好教練</label>
+              <select id="bookTrainer" class="form-select">
+                <option value="由系統推薦最佳教練">由 Fit Life 專業團隊配對推薦</option>
+                <option value="Marcus Chen">Marcus Chen (肌力體能總監)</option>
+                <option value="Elena Lin">Elena Lin (體態與皮拉提斯專家)</option>
+                <option value="Leo Wang">Leo Wang (燃脂 HIIT 教官)</option>
+                <option value="Sarah Wu">Sarah Wu (功能性訓練與營養)</option>
+              </select>
+            </div>
+
+            <!-- 預約時段 -->
+            <div class="form-group full-width">
+              <label class="form-label" for="bookTimeSlot">方便前來時段</label>
+              <select id="bookTimeSlot" class="form-select">
+                <option value="晨間活力時段 (07:00 - 09:30)">晨間活力時段 (07:00 - 09:30) - 上班上課前先充電</option>
+                <option value="午後彈性時段 (12:00 - 15:00)">午後彈性時段 (12:00 - 15:00) - 學生空堂/自由工作者推薦</option>
+                <option value="下班黃金時段 (18:30 - 21:30)" selected>下班黃金時段 (18:30 - 21:30) - 擺脫一整天工作壓力</option>
+                <option value="週末假日專班 (09:00 - 18:00)">週末假日專班 (09:00 - 18:00)</option>
+              </select>
+            </div>
+
+            <!-- 備註說明 / 目標 -->
+            <div class="form-group full-width">
+              <label class="form-label" for="bookNotes">個人運動目標或特殊需求 (選填)</label>
+              <textarea id="bookNotes" class="booking-textarea" placeholder="例如：目前常感到腰酸，想加強核心；或是希望能減重 5 公斤、增強跑步體能..."></textarea>
+            </div>
+
+            <div class="full-width" style="margin-top: 10px;">
+              <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem; padding: 16px;">
+                確認送出預約表單
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+              <p class="booking-notice">🔒 我們嚴格保護您的隱私資料，絕不主動推銷或洩露個資。</p>
+            </div>
+          </div>
         </form>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div class="footer-brand"><a class="brand" href="#top" aria-label="回到藍天咖啡首頁"><span class="brand-mark" aria-hidden="true">B</span><span class="brand-copy"><strong>藍天咖啡</strong><small>BLUE SKY COFFEE</small></span></a><p>為喜愛手沖咖啡的你，留下 一段慢慢品味、微微放晴的時間。</p></div>
-      <div><p class="footer-title">網站主題</p><div class="footer-links"><a href="#story">我們的故事</a><a href="#coffee">本季選豆</a><a href="#brew">沖煮日常</a></div></div>
-      <div><p class="footer-title">聯絡我們</p><div class="footer-links"><a href="mailto:hello@bluesky.coffee">hello@bluesky.coffee</a><address>台中市西屯區僑光路 100 號</address><span>每日 10:00 — 19:00</span></div></div>
     </div>
-    <div class="wrap footer-bottom"><span>© 2025 BLUE SKY COFFEE. ALL RIGHTS RESERVED.</span><span>BREW SLOW · LIVE BRIGHT</span></div>
+  </section>
+
+  <!-- ==========================================================================
+       常見問題 FAQ Section
+       ========================================================================== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">解決您的疑惑</div>
+        <h2 class="section-title">常見問題 <span>FAQ</span></h2>
+        <p class="section-desc">彙整學員初次到訪最常詢問的相關問題與解答。</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item open">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q1. 我完全沒有運動基礎，可以直接報名上課嗎？</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-content">
+            當然可以！Fit Life 每一堂新手推薦課程都會由教練進行「分級退階動作教學」，教練會先確認您的關節活動度與發力狀況，循序漸進引導，不會有跟不上或受傷的壓力。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q2. 學生方案需要出示什麼證明？有限定學校嗎？</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-content">
+            凡出示教育部認可之公私立大專院校、研究所或高中職「有效在學學生證」或在學證明即可辦理，全台各級學校皆可享有學生 8 折優惠與無綁約月卡！
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q3. 上班族下班尖峰時段，場館會不會人擠人、排不到器材？</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-content">
+            Fit Life 採用先進的「智慧人流預約控管系統」，團體課與自由重訓區均設有上限人數，並配備充足的深蹲架與多功能訓練站，保證運動體驗順暢不排隊！
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q4. 初次預約需要準備什麼裝備或服裝？</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-content">
+            請著舒適透氣的運動排汗衣物、乾淨室內運動鞋（請勿赤腳或穿拖鞋拖行），並攜帶水瓶與個人運動毛巾。場館內設有飲水機與星級淋浴置物櫃供您免費使用。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       頁尾 Footer
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- 品牌簡介 -->
+        <div>
+          <a href="#hero" class="brand" style="margin-bottom: 14px;">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 5v14M18 5v14M2 9v6M22 9v6M6 12h12"></path>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">Fit Life</span>
+              <span class="brand-sub">健身生活</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            推廣健康生活與運動健身。以活力、專業、現代為核心價值，陪伴學生與上班族鍛鍊身心，綻放無限可能。
+          </p>
+        </div>
+
+        <!-- 快速導覽 -->
+        <div>
+          <h4 class="footer-title">快速導覽</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">品牌首頁</a></li>
+            <li><a href="#audience">學生與上班族方案</a></li>
+            <li><a href="#courses">熱門健身課程</a></li>
+            <li><a href="#health-tool">BMI & TDEE 計算器</a></li>
+            <li><a href="#trainers">專業教練團隊</a></li>
+          </ul>
+        </div>
+
+        <!-- 服務分館 -->
+        <div>
+          <h4 class="footer-title">服務據點</h4>
+          <ul class="footer-links">
+            <li><a href="#booking">📍 市中心旗艦館 (捷運站步行2分鐘)</a></li>
+            <li><a href="#booking">📍 科技園區館 (內科/南軟上班族首選)</a></li>
+            <li><a href="#booking">📍 大學校園館 (大專院校特約基地)</a></li>
+          </ul>
+        </div>
+
+        <!-- 營業時間與聯絡 -->
+        <div>
+          <h4 class="footer-title">營運資訊</h4>
+          <div class="footer-contact">
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              週一至週五：06:30 - 23:30
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              週六與週日：07:30 - 22:30
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              服務專線：0800-888-FIT
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Fit Life 健身生活 (Fit Life Fitness Co., Ltd.) 版權所有。
+        </div>
+        <div>
+          品牌色彩規範：黑色 #0C0E12 ｜ 橘色 #FF5722 ｜ 白色 #FFFFFF
+        </div>
+      </div>
+    </div>
   </footer>
-  <div class="toast" role="status" aria-live="polite"></div>
 
+  <!-- ==========================================================================
+       彈窗：預約成功 Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="bookingSuccessModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('bookingSuccessModal')">&times;</button>
+      <div class="modal-success-icon">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="modal-title">預約申請已成功送出！</h3>
+      <p class="modal-desc">
+        感謝您選擇 Fit Life 健身生活！專屬運動規劃師已收到您的資訊，我們將在 24 小時內以電話或簡訊與您確認體驗時間。
+      </p>
+
+      <div class="modal-summary-box">
+        <p><span>預約大名：</span><strong id="modalSummaryName">-</strong></p>
+        <p><span>身分別：</span><strong id="modalSummaryIdentity">-</strong></p>
+        <p><span>預約課程：</span><strong id="modalSummaryCourse">-</strong></p>
+        <p><span>偏好教練：</span><strong id="modalSummaryTrainer">-</strong></p>
+        <p><span>預約時段：</span><strong id="modalSummaryTime">-</strong></p>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('bookingSuccessModal')">
+        了解並關閉
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       彈窗：文章詳情 Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="articleModal">
+    <div class="modal-card" style="max-width: 600px;">
+      <button class="modal-close" onclick="closeModal('articleModal')">&times;</button>
+      <div class="badge-tag" style="margin-bottom: 10px;">Fit Life 運動健康小百科</div>
+      <h3 class="modal-title" id="articleModalTitle" style="text-align: left; margin-bottom: 14px;">文章標題</h3>
+      <div class="modal-desc" id="articleModalContent" style="text-align: left; color: var(--text-gray-300); line-height: 1.8; margin-bottom: 24px;">
+        文章內文
+      </div>
+      <button class="btn btn-secondary" style="width: 100%;" onclick="closeModal('articleModal')">
+        返回瀏覽
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       互動 JavaScript
+       ========================================================================== -->
   <script>
-    (() => {
-      const menuButton = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const toast = document.querySelector('.toast');
-      let toastTimer;
+    // 1. 行動版選單切換
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-      const closeMenu = () => {
-        navLinks.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', '開啟導覽選單');
-        menuButton.textContent = '☰';
-      };
-      menuButton.addEventListener('click', () => {
-        const opening = !navLinks.classList.contains('open');
-        navLinks.classList.toggle('open', opening);
-        menuButton.setAttribute('aria-expanded', String(opening));
-        menuButton.setAttribute('aria-label', opening ? '關閉導覽選單' : '開啟導覽選單');
-        menuButton.textContent = opening ? '×' : '☰';
-      });
-      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
 
-      const showToast = message => {
-        clearTimeout(toastTimer);
-        toast.textContent = message;
-        toast.classList.add('show');
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
-      };
-      document.querySelectorAll('[data-coffee]').forEach(button => {
-        button.addEventListener('click', () => showToast(`已將「${button.dataset.coffee}」加入你的收藏。`));
+    // 點擊選單項目自動關閉
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
       });
-      document.querySelector('#subscribeForm').addEventListener('submit', event => {
-        event.preventDefault();
-        event.currentTarget.reset();
-        showToast('謝謝訂閱，下一封晴朗的風味通信即將寄出。');
-      });
+    });
 
-      const revealItems = document.querySelectorAll('.reveal');
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!('IntersectionObserver' in window) || reducedMotion) {
-        revealItems.forEach(item => item.classList.add('visible'));
-      } else {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: .12 });
-        revealItems.forEach(item => observer.observe(item));
+    // 2. 課程分類篩選
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const courseCards = document.querySelectorAll('.course-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        courseCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 3. 快速帶入身分與課程
+    function selectAudience(audienceType) {
+      const select = document.getElementById('bookIdentity');
+      if (select) {
+        select.value = audienceType;
       }
-    })();
+      const bookingSection = document.getElementById('booking');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function bookSpecificCourse(courseName) {
+      const courseSelect = document.getElementById('bookCourse');
+      if (courseSelect) {
+        courseSelect.value = courseName;
+      }
+      const bookingSection = document.getElementById('booking');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function selectTrainer(trainerName) {
+      const trainerSelect = document.getElementById('bookTrainer');
+      if (trainerSelect) {
+        trainerSelect.value = trainerName;
+      }
+      const bookingSection = document.getElementById('booking');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 4. 健康計算機 (BMI & TDEE 試算)
+    function calculateHealthMetrics(event) {
+      event.preventDefault();
+
+      const gender = document.getElementById('calcGender').value;
+      const age = parseFloat(document.getElementById('calcAge').value) || 25;
+      const height = parseFloat(document.getElementById('calcHeight').value) || 170;
+      const weight = parseFloat(document.getElementById('calcWeight').value) || 65;
+      const activityMultiplier = parseFloat(document.getElementById('calcActivity').value) || 1.55;
+
+      // BMI = kg / (m^2)
+      const heightM = height / 100;
+      const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+      let bmiStatus = '';
+      if (bmi < 18.5) {
+        bmiStatus = '體重過輕';
+      } else if (bmi < 24) {
+        bmiStatus = '健康標準';
+      } else if (bmi < 27) {
+        bmiStatus = '微過重';
+      } else {
+        bmiStatus = '肥胖警訊';
+      }
+
+      // Mifflin-St Jeor 公式算 BMR
+      let bmr = 0;
+      if (gender === 'male') {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+      bmr = Math.round(bmr);
+
+      const tdee = Math.round(bmr * activityMultiplier);
+
+      document.getElementById('resultBmi').innerText = `${bmi} (${bmiStatus})`;
+      document.getElementById('resultBmr').innerText = `${bmr.toLocaleString()} kcal`;
+      document.getElementById('resultTdee').innerText = `${tdee.toLocaleString()} kcal`;
+
+      let advice = '';
+      if (bmi < 18.5) {
+        advice = '教練建議：您的體重偏輕，建議透過「科學化重訓 + 每日熱量盈餘 300-500 kcal」，補充充足蛋白質，建立扎實肌群！';
+      } else if (bmi <= 24) {
+        advice = '教練建議：體態指標非常標準！建議以「肌力雕塑 + 維持 TDEE 平衡飲食」，提升肌肉緊實度與心肺機能。';
+      } else {
+        advice = '教練建議：建議每週進行 2-3 次「HIIT 間歇燃脂 + 基礎阻力訓練」，並維持每日熱量赤字約 300-400 kcal，循序漸進安全減脂！';
+      }
+
+      document.getElementById('resultAdvice').innerHTML = `<strong>教練建議：</strong>${advice}`;
+      document.getElementById('calcResultBox').classList.add('active');
+    }
+
+    // 5. 預約表單送出與彈窗
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('bookName').value;
+      const identity = document.getElementById('bookIdentity').value;
+      const course = document.getElementById('bookCourse').value;
+      const trainer = document.getElementById('bookTrainer').value;
+      const timeSlot = document.getElementById('bookTimeSlot').value;
+
+      document.getElementById('modalSummaryName').innerText = name;
+      document.getElementById('modalSummaryIdentity').innerText = identity;
+      document.getElementById('modalSummaryCourse').innerText = course;
+      document.getElementById('modalSummaryTrainer').innerText = trainer;
+      document.getElementById('modalSummaryTime').innerText = timeSlot;
+
+      document.getElementById('bookingSuccessModal').classList.add('active');
+
+      // 重設表單
+      event.target.reset();
+    }
+
+    // 6. 文章閱讀彈窗
+    function openArticleModal(title, content) {
+      document.getElementById('articleModalTitle').innerText = title;
+      document.getElementById('articleModalContent').innerText = content;
+      document.getElementById('articleModal').classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // 點擊背景關閉 Modal
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-backdrop')) {
+        e.target.classList.remove('active');
+      }
+    });
+
+    // 7. FAQ 手風琴摺疊切換
+    function toggleFaq(headerElement) {
+      const item = headerElement.parentElement;
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
   </script>
 </body>
 </html>
